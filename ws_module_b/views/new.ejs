@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <%- include('partials/css.ejs') %>
+  </head>
+  <body>
+    <h1>Create a new <%= title %></h1>
+    <% if (locals.error) { %>
+      <h2><%= error %></h2>
+    <% } %>
+    <form action="/ws_module_b/<%= title.toLowerCase() === 'product' ? 'products' : title.toLowerCase() %>">
+      <input type="hidden" name="pwd" value="admin">
+      <input type="submit" value="View all <%= title %>">
+    </form>
+    <form action="/ws_module_b/<%= title.toLowerCase() === 'product' ? 'products' : title.toLowerCase() %>" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="pwd" value="admin">
+    <% fields.forEach(field => { %>
+        <label for="<%= field.name %>">
+            <%= field.label %>
+            <input type="<%= field.type %>" name="<%= field.name %>" <%= field.required ? 'required' : '' %> value="<%= locals.data ? data[field.name] : "" %>">
+        </label>
+    <% }) %>
+    <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <%- include('partials/css.ejs') %>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="<%= title.toLowerCase() === "product" ? "products" : title.toLowerCase() %>/new">
+      <input type="hidden" name="pwd" value="admin">
+      <input type="submit" value="Create a new <%= title %>">
+    </form>
+    <form action="<%= other.toLowerCase() %>">
+      <input type="hidden" name="pwd" value="admin">
+      <input type="submit" value="View other <%= other %>">
+    </form>
+    <% if (locals.data) { %>
+    <table border="1">
+    <thead>
+      <tr>
+        <% fields.forEach(f => { %>
+          <th><%= f.label %></th>
+        <% }) %>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(r => { %>
+        <tr>
+          <% Object.keys(r).forEach(k => { %>
+            <td><%= r[k] %></td>
+          <% }) %>
+        </tr>
+      <% }) %>
+    </tbody>
+    </table>
+    <% } %>
+  </body>
+</html>
+
