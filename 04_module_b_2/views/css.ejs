@@ -1,14 +1,70 @@
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 40px;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+section span {
+    align-self: flex-end;
+}
+
 form {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 ul {
     padding: 30px;
     border: 1px solid #000;
     border-radius: 20px;
+    list-style: none;
+}
+li {
+    margin-block: 5px;
+}
+img {
+    border-radius: 30px;
+}
+a {
+    color: black;
 }
 .error {
     color: red;
+}
+input, select, button, textarea {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+input[type=submit] {
+    padding: 5px 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+label {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 </style>
