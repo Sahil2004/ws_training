@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify</title>
+    <%- include("css.ejs") %>
+</head>
+<body>
+    <h1>Verify</h1>
+    <form action="verify" method="POST">
+        <textarea name="gtin" id="gtin"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <% if (locals.data) { %>
+        <% if (locals.all) { %>
+            All valid <img src="/04_module_b/uploads/tick.png" alt="Tick" width="50">
+        <% } %>
+        <table border="1">
+            <thead>
+                <th>GTIN</th>
+                <th>Verification Status</th>
+            </thead>
+            <tbody>
+                <% data.forEach(d => { %>
+                    <tr>
+                        <td><%= d.gtin %></td>
+                        <td><%= d.verify %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>

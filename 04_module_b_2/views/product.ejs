@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <%- include("css.ejs") %>
+</head>
+<body>
+    <section>
+    <a href="?lang=en">EN</a>/<a href="?lang=fr">FR</a>
+    <h2>
+        <%= data.Company.name %>
+    </h2>
+    <img src="/04_module_b/<%= data.image %>" alt="<%= data.name %>" width="300">
+    <p>
+        <%= data.GTIN  %>
+    </p>
+    <p>
+        <%= lang === 'en' ? data.description : data.descriptionFr %>
+    </p>
+    <p>
+        weight: <%= data.grossWeight %><%= data.unit %>
+    </p>
+    <p>
+        net content weight: <%= data.netWeight %><%= data.unit %>
+    </p>
+    </section>
+</body>
+</html>

@@ -315,8 +315,156 @@ router.post("/products/delete/:id", auth, async (req, res) => {
 
 // Public PRODUCT APIs
 
-router.get("/products.json", (req, res) => {});
+function productTransformer(data) {
+  function transformer(d) {
+    return {
+      name: {
+        en: d.name,
+        fr: d.nameFr
+      },
+      description: {
+        en: d.description,
+        fr: d.descriptionFr
+      },
+      gtin: d.GTIN.toString(),
+      brand: d.brand,
+      countryOfOrigin: d.country,
+      weight: {
+        gross: d.grossWeight,
+        net: d.netWeight,
+        unit: d.unit
+      },
+      company: {
+        companyName: d.Company.name,
+        companyAddress: d.Company.address,
+        companyTelephone: d.Company.mobile,
+        companyEmail: d.Company.email,
+        owner: {
+          name: d.Company.Owner.name,
+          mobileNumber: d.Company.Owner.mobile,
+          email: d.Company.Owner.email
+        },
+        contact: {
+          name: d.Company.Contact.name,
+          mobileNumber: d.Company.Contact.mobile,
+          email: d.Company.Contact.email
+        }
+      }
+    }
+  }
+  return Array.isArray(data) ? data.map(transformer) : transformer(data);
+}
 
-router.get("/products/:id.json", (req, res) => {});
+router.get("/products.json", async (req, res) => {
+  const { page = 1, query = ""} = req.query;
+  const count = await prisma.Products.count({})
+  const data = await prisma.Products.findMany({
+    include: {
+      Company: {
+        include: {
+          Owner: true,
+          Contact: true
+        }
+      }
+    },
+    where: {
+      OR: [
+        { name: { contains: query, mode: 'insensitive'}},
+        { nameFr: { contains: query, mode: 'insensitive'}},
+        { description: { contains: query, mode: 'insensitive'}},
+        { descriptionFr: { contains: query, mode: 'insensitive'}},
+      ]
+    },
+    skip: (page - 1) * 10,
+    take: 10
+  });
+  res.status(200).json({
+    data: productTransformer(data),
+    pagination: {
+      current_page: page,
+      total_pages: Math.ceil(count / 10.0),
+      per_page: 10,
+      next_page_url: page + 1 <= Math.ceil(count / 10.0) ? "http://localhost:4003/04_module_b/products.json?page=" + (page + 1) : null,
+      prev_page_url: page - 1 >= 1 ? "http://localhost:4003/04_module_b/products.json?page=" + (page + 1) : null,
+    }
+  })
+});
+
+router.get("/products/:id.json", async (req, res) => {
+  const data = await prisma.Products.findFirst({
+    where: {
+      GTIN: req.params.id
+    },
+    include: {
+      Company: {
+        include: {
+          Owner: true,
+          Contact: true
+        }
+      }
+    },
+  });
+  if (!data) {
+    return res.sendStatus(404)
+  } else {
+    res.status(200).json(productTransformer(data))
+  }
+});
+
+
+// Public Pages
+
+router.get("/verify", (req, res) => {
+  res.render("verify");
+});
+
+router.post("/verify", async (req, res) => {
+  const { gtin } = req.body;
+  const result = await Promise.all(gtin.split("\r\n").map(async (g) => {
+    const p = await prisma.Products.findFirst({
+      select: {
+        GTIN: true
+      },
+      where: {
+        GTIN: g
+      }
+    })
+    if (p) {
+      return {
+        gtin: g,
+        verify: true
+      }
+    } else {
+      return {
+        gtin: g,
+        verify: false
+      }
+    }
+  }))
+  let all = true;
+  result.forEach(r => {
+    if (!r.verify) all = false
+  })
+  res.render("verify", {
+    data: result,
+    all: all
+  })
+})
+
+router.get("/01/:id", async (req, res) => {
+  const { lang = "en" } = req.query;
+  const data = await prisma.Products.findFirst({
+    where: {
+      GTIN: req.params.id,
+    },
+    include: {
+      Company: true
+    }
+  })
+  res.render("product", {
+    lang: lang,
+    data: data
+  })
+})
 
 export { router as mainRouter };
