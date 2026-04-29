@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a <%= title %></title>
+    <%- include("partials/css.ejs") %>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <a href="/04_module_b/<%= title.toLowerCase() %>?pwd=admin">View all <%= title %></a>
+    <% if (locals.fields) { %>
+        <form>
+            <input type="hidden" name="pwd" value="admin">
+            <% fields.forEach(row => { %>
+                <label for="<%= row.name %>">
+                    <%= row.label %>
+                    <input type="<%= row.type %>" name="<%= row.name %>" id="<%= row.name %>" <%= row.required ? 'required' : '' %> placeholder="<%= row.label %>">
+                </label>
+            <% }) %>
+            <input type="submit" value="Submit">
+        </form>
+    <% } %>
+</body>
+</html>

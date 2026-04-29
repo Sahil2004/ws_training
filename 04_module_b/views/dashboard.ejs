@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <%- include("partials/css.ejs") %>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <a href="/04_module_b/<%= title.toLowerCase() %>/new?pwd=admin">Create a <%= title %></a>
+    <a href="/04_module_b/<%= other.toLowerCase() %>?pwd=admin">View all <%= other %></a>
+    <% if (locals.data) { %>
+        <table border="1">
+            <thead>
+                <tr>
+                    <% fields.forEach(row => { %>
+                        <th><%= row.label %></th>
+                    <% }) %>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(row => { %>
+                    <tr>
+                        <% Object.keys(row).forEach(key => { %>
+                            <td><%= row[key] %></td>
+                        <% }) %>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>
