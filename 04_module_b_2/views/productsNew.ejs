@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <%- include("css.ejs") %>
+</head>
+<body>
+    <h1>Products</h1>
+    <a href="/04_module_b/products?pwd=admin">View All Products</a>
+    <% if (locals.error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/04_module_b/products<%= locals.data ? '/update/' + data['GTIN'] : '' %>" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="pwd" value="admin">
+        <% fields.forEach(f => { %>
+            <label for="<%= f.name %>">
+                <%= f.name %>
+                <% if (f.type === "select") { %>
+                    <select name="<%= f.name %>" id="<%= f.name %>">
+                        <% options.forEach(o => { %>
+                            <option value="<%= o.id %>" <%= locals.data && o.id === data[f.name] ? 'selected' : '' %>><%= o.name %></option>
+                        <% }) %>
+                    </select>
+                <% } else { %>
+                <input type="<%= f.type %>" name="<%= f.name %>" id="<%= f.name %>" <%= f.required ? 'required' : '' %> value="<%= locals.data && f.name !== 'isHidden' ? data[f.name] : '' %>" <%= [locals.data && f.type === 'checkbox' && data.isHidden ? 'checked' : ''] %>>
+                <% } %>
+            </label>
+        <% }) %>
+        <input type="submit" value="Submit">
+    </form>
+    <% if (locals.data && data['isHidden']) { %>
+    <form action="/04_module_b/products<%= locals.data ? '/delete/' + data['GTIN'] : '' %>" method="POST">
+        <input type="hidden" name="pwd" value="admin">
+        <input type="submit" value="Delete">
+    </form>
+    <% } %>
+</body>
+</html>

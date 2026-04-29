@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company</title>
+    <%- include("css.ejs") %>
+</head>
+<body>
+    <h1>Company</h1>
+    <a href="/04_module_b/company?pwd=admin">View All Companies</a>
+    <form action="/04_module_b/company<%= locals.data ? '/update/' + data['id'] : '' %>" method="POST">
+        <input type="hidden" name="pwd" value="admin">
+        <% fields.forEach(f => { %>
+            <label for="<%= f.name %>">
+                <%= f.name %>
+                <input type="<%= f.type %>" name="<%= f.name %>" id="<%= f.name %>" <%= f.required ? 'required' : '' %> value="<%= locals.data && f.name !== 'isDeactivated' ? data[f.name] : '' %>" <%= [locals.data && f.type === 'checkbox' && data.isDeactivated ? 'checked' : ''] %>>
+            </label>
+        <% }) %>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

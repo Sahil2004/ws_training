@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <%- include("css.ejs") %>
+</head>
+<body>
+    <h1>Products</h1>
+    <a href="/04_module_b/products/new?pwd=admin">Create a new Product</a>
+    <a href="/04_module_b/company?pwd=admin">View Companies</a>
+        <% data.forEach(el => { %>
+    <ul>
+        <% Object.keys(el).forEach(key => { %>
+            <% if (key !== "Company" && key !== "companyId") { %>
+                <% if (key === "image") { %>
+                    <li><img src="/04_module_b/<%= el[key] %>" alt="<%= key %>"  height="200"></li>
+                <% } else { %>
+                <li><%= key %>: <%= el[key] %> </li>
+                <% } %>
+            <% } %>
+        <% }) %>
+        <li>Actions: <a href="/04_module_b/products/update/<%= el['GTIN'] %>?pwd=admin">Update/View</a></li>
+    </ul>
+        <% }) %>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company</title>
+    <%- include("css.ejs") %>
+</head>
+<body>
+    <h1>Company</h1>
+    <a href="/04_module_b/company/new?pwd=admin">Create a new Company</a>
+    <a href="/04_module_b/products?pwd=admin">View Products</a>
+        <% data.forEach(el => { %>
+            <% if (!el['isDeactivated']) { %>
+    <ul>
+        <% Object.keys(el).forEach(key => { %>
+            <% if (key === "Owner" || key === "Contact") { %>
+                <% Object.keys(el[key]).forEach(k => { %>
+                    <% if (k !== "id") { %>
+                        <li><%= key %>'s <%= k %>: <%= el[key][k] %> </li>
+                    <% } %>
+                <% }) %>
+            <% } else { %>
+                    <% if (key !== "id" && key !== "ownerId" && key !== "contactId") { %>
+                <li><%= key %>: <%= el[key] %> </li>
+                    <% } %>
+                <% } %>
+        <% }) %>
+        <li>Actions: <a href="/04_module_b/company/update/<%= el['id'] %>?pwd=admin">Update/View</a></li>
+    </ul>
+            <% } %>
+        <% }) %>
+        <h2>Deactivated:</h2>
+    <% data.forEach(el => { %>
+            <% if (el['isDeactivated']) { %>
+    <ul>
+        <% Object.keys(el).forEach(key => { %>
+            <% if (key === "Owner" || key === "Contact") { %>
+                <% Object.keys(el[key]).forEach(k => { %>
+                    <% if (k !== "id") { %>
+                        <li><%= key %>'s <%= k %>: <%= el[key][k] %> </li>
+                    <% } %>
+                <% }) %>
+            <% } else { %>
+                    <% if (key !== "id" && key !== "ownerId" && key !== "contactId") { %>
+                <li><%= key %>: <%= el[key] %> </li>
+                    <% } %>
+                <% } %>
+        <% }) %>
+        <li>Actions: <a href="/04_module_b/company/update/<%= el['id'] %>?pwd=admin">Update/View</a></li>
+    </ul>
+            <% } %>
+        <% }) %>
+</body>
+</html>
