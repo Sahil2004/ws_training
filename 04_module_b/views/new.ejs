@@ -9,13 +9,26 @@
 <body>
     <h1><%= title %></h1>
     <a href="/04_module_b/<%= title.toLowerCase() %>?pwd=admin">View all <%= title %></a>
+    <% if (locals.error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
     <% if (locals.fields) { %>
-        <form>
+        <form action="/04_module_b/<%= title.toLowerCase() %><%= locals.data ? '/' + id + '/update' : '' %>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="pwd" value="admin">
             <% fields.forEach(row => { %>
                 <label for="<%= row.name %>">
                     <%= row.label %>
-                    <input type="<%= row.type %>" name="<%= row.name %>" id="<%= row.name %>" <%= row.required ? 'required' : '' %> placeholder="<%= row.label %>">
+                    <% if (row.type === "textarea") { %>
+                        <textarea name="<%= row.name %>" id="<%= row.name %>" placeholder="<%= row.label %>" <%= row.required ? 'required' : '' %> ><%= locals.data ? data[row.name] : '' %></textarea>
+                    <% } else if (row.type === "select") { %>
+                        <select name="<%= row.name %>" id="<%= row.name %>">
+                            <% selectOptions.forEach(sel => { %>
+                                <option value="<%= sel.id %>" <%= locals.data ? data[row.name] === sel.id ? 'selected' : '' : '' %>><%= sel.name %></option>
+                            <% }) %>
+                        </select>
+                    <% } else { %>
+                    <input type="<%= row.type %>" name="<%= row.name %>" value="<%= locals.data ? data[row.name] : '' %>" id="<%= row.name %>" <%= row.required ? 'required' : '' %> placeholder="<%= row.label %>">
+                    <% } %>
                 </label>
             <% }) %>
             <input type="submit" value="Submit">

@@ -10,25 +10,72 @@
     <h1><%= title %></h1>
     <a href="/04_module_b/<%= title.toLowerCase() %>/new?pwd=admin">Create a <%= title %></a>
     <a href="/04_module_b/<%= other.toLowerCase() %>?pwd=admin">View all <%= other %></a>
-    <% if (locals.data) { %>
+    <% if (locals.data[0]) { %>
         <table border="1">
             <thead>
                 <tr>
-                    <% fields.forEach(row => { %>
-                        <th><%= row.label %></th>
+                    <% Object.keys(data[0]).forEach(key => { %>
+                        <% fields.forEach(f => { %>
+                            <% if (f.name === key) { %>
+                                <th><%= f.label %></th>
+                            <% } %>
+                        <% }) %>
                     <% }) %>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <% data.forEach(row => { %>
-                    <tr>
-                        <% Object.keys(row).forEach(key => { %>
-                            <td><%= row[key] %></td>
-                        <% }) %>
-                    </tr>
+                    <% if (!row.isDeactivated) { %>
+                        <tr>
+                            <% Object.keys(row).forEach(key => { %>
+                                <% if (key !== "id") { %>
+                                    <td><%= row[key] %></td>
+                                <% } %>
+                            <% }) %>
+                            <td>
+                                <a href="/04_module_b/<%= title.toLowerCase() %>/<%= row.id %>/update?pwd=admin">View/Update</a>
+                            </td>
+                        </tr>
+                    <% } %>
                 <% }) %>
             </tbody>
         </table>
+
+        <% if (title === "Company") { %>
+        <h4>Deactivated</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <% Object.keys(data[0]).forEach(key => { %>
+                        <% fields.forEach(f => { %>
+                            <% if (f.name === key) { %>
+                                <th><%= f.label %></th>
+                            <% } %>
+                        <% }) %>
+                    <% }) %>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(row => { %>
+                    <% if (row.isDeactivated) { %>
+                        <tr>
+                            <% Object.keys(row).forEach(key => { %>
+                                <% if (key !== "id") { %>
+                                    <td><%= row[key] %></td>
+                                <% } %>
+                            <% }) %>
+                            <td>
+                                <a href="/04_module_b/<%= title.toLowerCase() %>/<%= row.id %>/update?pwd=admin">View/Update</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% }) %>
+            </tbody>
+        </table>
+        <% } %>
+
     <% } %>
 </body>
 </html>

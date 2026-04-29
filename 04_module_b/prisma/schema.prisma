@@ -21,7 +21,7 @@ model Company {
   isDeactivated Boolean @default(false)
   ownerId String @db.VarChar(36)
   Owner User @relation("owner", fields: [ownerId], references: [id])
-  contactId String @db.VarChar(35)
+  contactId String @db.VarChar(36)
   Contact User @relation("contact", fields: [contactId], references: [id])
   Products Products[]
 }
@@ -36,12 +36,12 @@ model User {
 }
 
 model Products {
-  GTIN String @id @db.VarChar(14)
+  GTIN BigInt @id
   name String @db.VarChar(100)
   nameFr String @db.VarChar(100)
   description String?
   descriptionFr String?
-  images String? @db.VarChar(100)
+  image String? @db.VarChar(100)
   brand String? @db.VarChar(50)
   country String? @db.VarChar(50)
   grossWeight Int? @db.SmallInt
