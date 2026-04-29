@@ -122,10 +122,19 @@ export const handler = (modelName = null, options = {}) => ({
             }
         } catch (err) {
             if (options.errRender) {
+                let selectOptions = null
+                if (options.select) {
+                    selectOptions = await prisma[options.select.name].findMany({
+                        select: {
+                            ...options.select.fields
+                        }
+                    })
+                }
                 return res.render(options.errRender, {
                     title: modelName,
                     fields: fields[modelName],
                     other: options.other,
+                    selectOptions: selectOptions,
                     error: err.message
                 })
             } else {

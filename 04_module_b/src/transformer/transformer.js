@@ -10,7 +10,8 @@ export const companyTransformer = (data) => {
         ownerEmail: d.Owner.email,
         contactName: d.Contact.name,
         contactMobile: d.Contact.mobile,
-        contactEmail: d.Contact.email
+        contactEmail: d.Contact.email,
+        isDeactivated: d.isDeactivated
     })
     return Array.isArray(data) ? data.map(transformer) : transformer(data);
 }
@@ -28,6 +29,7 @@ export const productsTransformer = (data) => {
         grossWeight: d.grossWeight,
         netWeight: d.netWeight,
         unit: d.unit,
+        isHidden: d.isHidden
     })
     return Array.isArray(data) ? data.map(transformer) : transformer(data);
 }

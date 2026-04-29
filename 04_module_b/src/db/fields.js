@@ -10,6 +10,7 @@ export const fields = {
         { name: "contactName", label: "Contact's Name", type: "text", required: true },
         { name: "contactEmail", label: "Contact's Email", type: "email", required: true },
         { name: "contactMobile", label: "Contact's Mobile", type: "tel", required: false },
+        { name: "isDeactivated", label: "Deactivated", type: "checkbox", required: false}
     ],
     Products: [
         { name: "GTIN", label: "GTIN", type: "number", required: true},
@@ -23,6 +24,7 @@ export const fields = {
         { name: "grossWeight", label: "Gross Weight", type: "number", required: false},
         { name: "netWeight", label: "Net Weight", type: "number", required: false},
         { name: "unit", label: "Weight Unit", type: "text", required: false},
-        { name: "company_id", label: "Company", type: "select", required: true }
+        { name: "company_id", label: "Company", type: "select", required: true },
+        { name: "isHidden", label: "Hidden", type: "checkbox", required: false}
     ]
 }

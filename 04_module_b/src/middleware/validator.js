@@ -1,9 +1,10 @@
 import { fields } from "../db/fields.js";
 
 export const companyCreateValidator = (req, res, next) => {
-    const { pwd, ownerName, ownerEmail, ownerMobile, contactName, contactEmail, contactMobile, ...body } = req.body;
+    const { pwd, ownerName, ownerEmail, ownerMobile, contactName, contactEmail, contactMobile, isDeactivated, ...body } = req.body;
     const newBody = {
         ...body,
+        isDeactivated: isDeactivated === "" ? true : false,
         Owner: {
             create: {
                 name: ownerName,
@@ -24,9 +25,10 @@ export const companyCreateValidator = (req, res, next) => {
 }
 
 export const companyUpdateValidator = (req, res, next) => {
-    const { pwd, ownerName, ownerEmail, ownerMobile, contactName, contactEmail, contactMobile, ...body } = req.body;
+    const { pwd, ownerName, ownerEmail, ownerMobile, contactName, contactEmail, contactMobile, isDeactivated, ...body } = req.body;
     const newBody = {
         ...body,
+        isDeactivated: isDeactivated === "" ? true : false,
         Owner: {
             update: {
                 name: ownerName,
@@ -58,6 +60,7 @@ export const productsCreateValidator = (req, res, next) => {
             error: "GTIN length should be between 13 and 14 digits"
         })
     }
+    body.isHidden = Boolean(body.isHidden)
     body.GTIN = parseInt(body.GTIN)
     body.grossWeight = parseInt(body.grossWeight)
     body.netWeight = parseInt(body.netWeight)

@@ -16,7 +16,7 @@
                 <tr>
                     <% Object.keys(data[0]).forEach(key => { %>
                         <% fields.forEach(f => { %>
-                            <% if (f.name === key) { %>
+                            <% if (f.name === key && key !== "isHidden" && key !== "isDeactivated") { %>
                                 <th><%= f.label %></th>
                             <% } %>
                         <% }) %>
@@ -26,10 +26,10 @@
             </thead>
             <tbody>
                 <% data.forEach(row => { %>
-                    <% if (!row.isDeactivated) { %>
+                    <% if (!row["isDeactivated"] && !row["isHidden"]) { %>
                         <tr>
                             <% Object.keys(row).forEach(key => { %>
-                                <% if (key !== "id") { %>
+                                <% if (key !== "id" && key !== "isDeactivated" && key !== "isHidden") { %>
                                     <td><%= row[key] %></td>
                                 <% } %>
                             <% }) %>
@@ -49,7 +49,7 @@
                 <tr>
                     <% Object.keys(data[0]).forEach(key => { %>
                         <% fields.forEach(f => { %>
-                            <% if (f.name === key) { %>
+                            <% if (f.name === key && key !== "isDeactivated") { %>
                                 <th><%= f.label %></th>
                             <% } %>
                         <% }) %>
@@ -59,10 +59,10 @@
             </thead>
             <tbody>
                 <% data.forEach(row => { %>
-                    <% if (row.isDeactivated) { %>
+                    <% if (row["isDeactivated"]) { %>
                         <tr>
                             <% Object.keys(row).forEach(key => { %>
-                                <% if (key !== "id") { %>
+                                <% if (key !== "id" && key !== "isDeactivated" && key !== "isHidden") { %>
                                     <td><%= row[key] %></td>
                                 <% } %>
                             <% }) %>
