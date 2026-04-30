@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Session {
+  token String @id
+  user_id Int @db.SmallInt @unique
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model User {
+  id Int @id @db.SmallInt @default(autoincrement())
+  username String @unique @db.VarChar(50)
+  email String @unique @db.VarChar(100)
+  password String @db.VarChar(20)
+  role String @db.VarChar(5) @default("user")
+  is_banned Boolean @default(false)
+  publishedAlbums Album[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt @default(now())
+  session Session?
+}
+
+model Label {
+  id Int @id @db.SmallInt @default(autoincrement())
+  name String @db.VarChar(10)
+  songs Song[]
+}
+
+model Album {
+  id Int @id @db.SmallInt @default(autoincrement())
+  title String @db.VarChar(50)
+  artist String @db.VarChar(50)
+  release_year Int @db.SmallInt
+  genre String @db.VarChar(30)
+  description String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt @default(now())
+  publisher_id Int @db.SmallInt
+  publisher User @relation(fields: [publisher_id], references: [id])
+  songs Song[]
+}
+
+model Song {
+  id Int @id @db.SmallInt @default(autoincrement())
+  title String @db.VarChar(50)
+  album_id Int @db.SmallInt
+  album Album @relation(fields: [album_id], references: [id])
+  label Label[]
+  duration_seconds Int @db.SmallInt
+  order Int @db.SmallInt @default(autoincrement())
+  is_cover Boolean @default(false)
+  cover_image_url String @db.VarChar(20)
+  view_count Int @db.SmallInt @default(1)
+  lyrics String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt @default(now())
+}

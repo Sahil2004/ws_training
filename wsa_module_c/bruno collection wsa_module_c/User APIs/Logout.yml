@@ -1,0 +1,20 @@
+info:
+  name: Logout
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base}}/logout"
+  headers:
+    - name: x-authorization
+      value: Bearer 4f56edcb1558d4df2f77295f86059006
+  auth:
+    type: bearer
+    token: 4f56edcb1558d4df2f77295f86059006
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

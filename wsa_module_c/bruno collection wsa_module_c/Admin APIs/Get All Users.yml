@@ -1,0 +1,27 @@
+info:
+  name: Get All Users
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base}}/users?limit=2&cursor=eyJpZCI6Mn0="
+  headers:
+    - name: x-authorization
+      value: Bearer d2ce28b9a7fd7e4407e2b0fd499b7fe4
+    - name: ""
+      value: ""
+  params:
+    - name: limit
+      value: "2"
+      type: query
+    - name: cursor
+      value: eyJpZCI6Mn0=
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

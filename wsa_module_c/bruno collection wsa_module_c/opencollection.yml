@@ -1,0 +1,10 @@
+opencollection: 1.0.0
+
+info:
+  name: bruno collection wsa_module_c
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

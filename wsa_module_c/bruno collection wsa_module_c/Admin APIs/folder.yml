@@ -1,0 +1,7 @@
+info:
+  name: Admin APIs
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit

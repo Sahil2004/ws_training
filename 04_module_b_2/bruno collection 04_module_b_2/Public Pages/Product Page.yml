@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: ""
+  url: "{{base}}/01/1234567890123"
   auth: inherit
 
 settings:
