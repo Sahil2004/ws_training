@@ -44,6 +44,7 @@ model Album {
   release_year Int @db.SmallInt
   genre String @db.VarChar(30)
   description String?
+  is_deleted Boolean @default(false)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt @default(now())
   publisher_id Int @db.SmallInt
@@ -56,11 +57,12 @@ model Song {
   title String @db.VarChar(50)
   album_id Int @db.SmallInt
   album Album @relation(fields: [album_id], references: [id])
+  is_deleted Boolean @default(false)
   label Label[]
   duration_seconds Int @db.SmallInt
   order Int @db.SmallInt @default(autoincrement())
   is_cover Boolean @default(false)
-  cover_image_url String @db.VarChar(20)
+  cover_image_url String @db.VarChar(100)
   view_count Int @db.SmallInt @default(1)
   lyrics String?
   created_at DateTime @default(now())

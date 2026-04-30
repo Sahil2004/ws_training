@@ -1,0 +1,18 @@
+info:
+  name: Ban User
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{base}}/users/2/ban"
+  headers:
+    - name: x-authorization
+      value: Bearer d2ce28b9a7fd7e4407e2b0fd499b7fe4
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

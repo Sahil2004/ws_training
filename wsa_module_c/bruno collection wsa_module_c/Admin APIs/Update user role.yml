@@ -1,0 +1,24 @@
+info:
+  name: Update user role
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{base}}/users/3"
+  headers:
+    - name: x-authorization
+      value: Bearer d2ce28b9a7fd7e4407e2b0fd499b7fe4
+  body:
+    type: json
+    data: |-
+      {
+        "role": "admin"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

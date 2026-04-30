@@ -1,0 +1,36 @@
+info:
+  name: Create a new album
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base}}/albums"
+  headers:
+    - name: x-authorization
+      value: Bearer d2ce28b9a7fd7e4407e2b0fd499b7fe4
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: t
+      - name: artist
+        type: text
+        value: a
+      - name: release_year
+        type: text
+        value: "2022"
+      - name: genre
+        type: text
+        value: Pop
+      - name: description
+        type: text
+        value: Somerthing
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

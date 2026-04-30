@@ -1,0 +1,40 @@
+info:
+  name: Create a new song
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{base}}/albums/1/songs"
+  headers:
+    - name: x-authorization
+      value: Bearer d2ce28b9a7fd7e4407e2b0fd499b7fe4
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: t
+      - name: duration_seconds
+        type: text
+        value: "22"
+      - name: label
+        type: text
+        value: Rock
+      - name: lyrics
+        type: text
+        value: Lol
+      - name: cover_image
+        type: file
+        value:
+          - C:\Users\Admin\Downloads\img.jpg
+      - name: is_cover
+        type: text
+        value: "true"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
