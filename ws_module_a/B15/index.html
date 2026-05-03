@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B15</title>
+<style>
+    .output {
+        display: none;
+    }
+    .inpt {
+        display: flex;
+        gap: 10px;
+    }
+</style>
+</head>
+<body>
+    <section class="inpt">
+        <p>Enter a string: </p>
+        <input type="text" name="t" id="t">
+        <input type="submit" value="Submit" onclick="disp()">
+    </section>
+    <section class="output">
+        <h1>Processed String:</h1>
+        <h2 class="content"></h2>
+    </section>
+    <script>
+        const inpt = document.querySelector("#t")
+        const otp = document.querySelector(".output")
+        const content = document.querySelector(".content")
+        function disp() {
+            otp.style.display = "block";
+            content.innerHTML = inpt.value.toUpperCase().split("").reverse().join("")
+        }
+    </script>
+</body>
+</html>

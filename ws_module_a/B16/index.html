@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B16</title>
+    <style>
+        *{ 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        section {
+            padding: 50px;
+            background-color: beige;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 500px;
+            max-height: 500px;
+        }
+        .background {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .pin {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 25px solid #000;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(lightgreen 0deg 30deg, cyan 30deg 60deg, yellow 60deg 90deg, red 90deg 120deg, orange 120deg 150deg, yellow 150deg 180deg, green 180deg 210deg, blue 210deg 240deg, purple 240deg 270deg, magenta 270deg 300deg, pink 300deg 330deg, red 330deg 360deg);
+        }
+        @keyframes rotate {
+            0% {
+                rotate: 0deg;
+            }
+            20% {
+                rotate: 360deg;
+            }
+            40% {
+                rotate: 720deg;
+            }
+            60% {
+                rotate: 1080deg;
+            }
+            80% {
+                rotate: 1440deg;
+            }
+            100% {
+                rotate: 1800deg;
+            }
+        }
+        button {
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="background">
+            <div class="pin"></div>
+            <div class="circle"></div>
+        </div>
+        <button class="spin" onclick="spin()">Spin</button>
+    </section>
+    <script>
+        function spin() {
+            const circle = document.querySelector(".circle")
+            circle.style.animation = "rotate 6s linear infinite"
+            setTimeout(() => {
+                circle.style.animation = ""
+            }, 6000)
+        }
+    </script>
+</body>
+</html>

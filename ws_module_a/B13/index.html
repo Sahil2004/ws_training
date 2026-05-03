@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B13</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+section { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px; }
+      .circle {
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .circle1 {
+        background-color: green;
+      }
+      .circle2 {
+        background-color: blueviolet;
+      }
+      .circle3 {
+        background-color: peachpuff;
+      }
+      .circle4 {
+        background-color: gray;
+      }
+      .circle5 {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="circle circle1">Home</div>
+      <div class="circle circle2">About</div>
+      <div class="circle circle3">Contact</div>
+      <div class="circle circle4">Map</div>
+      <div class="circle circle5">Privacy</div>
+    </section>
+    <script>
+      const circles = document.querySelectorAll(".circle");
+      function getRandomIntInclusive(min, max) {
+        const maxSize = Math.min(window.innerWidth, window.innerHeight) / 2 - 20;
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(Math.min(maxSize, max));
+        return Math.floor(
+          Math.random() * (maxFloored - minCeiled + 1) + minCeiled,
+        ); // The maximum is inclusive and the minimum is inclusive
+      }
+      const rect = document.body.getBoundingClientRect()
+      const d = () => {
+        circles.forEach((c) => {
+            const dia = getRandomIntInclusive(100, 500)
+            c.style.width = `${dia}px`
+            c.style.height = `${dia}px`
+        });
+      }
+      d()
+      window.addEventListener("resize", () => {
+        d()
+      });
+    </script>
+  </body>
+</html>
