@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B17</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #0e779f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: sans-serif;
+      }
+      section {
+        background-color: white;
+      }
+      button {
+        padding: 20px;
+        border: 0;
+        background-color: #d4d9e8;
+      }
+      .tab {
+        width: 150px;
+        font-weight: bold;
+      }
+      .tab:hover {
+        color: #4a0d66;
+      }
+      h1 {
+        color: #37314c;
+        transition: all 1s;
+      }
+      p {
+        color: #969499;
+      }
+      .cta {
+        background-color: #4a0d66;
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: white;
+      }
+      .tabs {
+        display: flex;
+        gap: 5px;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        width: 615px;
+        padding: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="tabs">
+        <button class="tab" onclick="select(0)">ABOUT</button>
+        <button class="tab" onclick="select(1)">HISTORY</button>
+        <button class="tab" onclick="select(2)">OBJECTIVE</button>
+        <button class="tab" onclick="select(3)">IMPACT</button>
+      </div>
+      <div class="content">
+        <h1 class="h1"></h1>
+        <p class="p"></p>
+        <button class="cta">LEARN MORE</button>
+      </div>
+    </section>
+    <script>
+      const h1 = document.querySelector(".h1");
+      const p = document.querySelector(".p");
+      const tabs = document.querySelectorAll(".tab")
+      const text = [
+        {
+            title: "Introduction to WorldSkills",
+            description: "WorldSkills is a global platform for young professionals to demonstrate their skills in various trades and technologies. It aims to raise the profile and recognition of skilled people and show how important skills are in achieving economic growth.",
+        },
+        {
+            title: "History of WorldSkills",
+            description: "WorldSkills was founded in 1950 and has since grown to include participants from over 80 countries. The competition showcases a wide range of skills, from traditional trades to multi-skilled technology jobs."
+        },
+        {
+            title: "Objectives of the Competition",
+            description: "The competition aims to pursue excellence through competitions, events and initiatives. It promotes international cooperation and exchange of knowledge."
+        },
+        {
+            title: "Impact and Legacy",
+            description: "WorldSkills leaves a lasting impact on participants by enhancing their skills, boosting their career prospects, and fostering a global network of skilled professionals. It also influences education and training standards worldwide."
+        }
+      ]
+    function select(n) {
+        h1.innerHTML = text[n].title;
+        p.innerHTML = text[n].description;
+        tabs.forEach(t => {
+            t.style.background = "#d4d9e8"
+            t.style.color = "black"
+        })
+        tabs[n].style.background = "white"
+        tabs[n].style.color = "#4a0d66"
+    }
+    select(0)
+    </script>
+  </body>
+</html>
