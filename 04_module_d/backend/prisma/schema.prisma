@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Region {
+  id String @id @default(uuid(4)) @db.VarChar(36)
+  key String @db.VarChar(7) // max is 7 for central
+  name String @db.VarChar(10)
+  color String
+  summary String?
+  attractions Attraction[]
+}
+
+model Attraction {
+  id String @id @default(uuid(4)) @db.VarChar(36)
+  region_id String @db.VarChar(36)
+  region Region @relation(references: [id], fields: [region_id])
+  name String @db.VarChar(100)
+  description String?
+}
+
+model Category {
+  id String @id @default(uuid(4)) @db.VarChar(36)
+  label String @db.VarChar(14) // For the longest transportation
+  infoItems InfoItems[]
+}
+
+model InfoItems {
+  id String @id @default(uuid(4)) @db.VarChar(36)
+  category_id String @db.VarChar(36)
+  category Category @relation(fields: [category_id], references: [id])
+  icon String?
+  title String? @db.VarChar(50)
+  body String?
+  @@map("Info_items")
+}
+
+model Submission {
+  id String @id @default(uuid(4)) @db.VarChar(36)
+  name String? @db.VarChar(80)
+  email String? @db.VarChar(100)
+  country String? @db.VarChar(20)
+  interests String?
+  message String?
+  submitted_at DateTime @default(now())
+}

@@ -1,0 +1,1 @@
+export const BASE_URL = "http://localhost:4005/04_module_d/api"
