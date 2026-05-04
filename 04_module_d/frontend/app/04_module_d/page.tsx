@@ -3,7 +3,7 @@ import { BASE_URL } from "../config";
 export default function Landing() {
   return (
     <main className="bg-gray-200">
-      <header className="flex z-10 justify-between px-20 py-5 items-center fixed w-screen backdrop-blur-2xl bg-[#ffffffaf]">
+      <header className="flex z-20 justify-between px-20 py-5 items-center fixed w-screen backdrop-blur-2xl bg-[#ffffffaf]">
         <img src="images/logo.svg" alt="Logo" className="h-10" />
         <nav className="flex gap-4">
           <a href="">Regional Guide</a>
@@ -40,12 +40,21 @@ export default function Landing() {
           </a>
         </span>
       </section>
-      <section className="w-full flex flex-col py-20 items-center gap-10">
+      <section className="w-full flex flex-col py-20 items-center gap-10" id="regions">
         <span className="w-3/4">
           <h2 className="font-bold text-3xl">Regional Guide</h2>
           <p className="text-gray-600 pt-5">
           Click a region on the map to explore.
           </p>
+        </span>
+        <span className="flex gap-5">
+        <article className="border border-gray-200 shadow-xl rounded-xl bg-white p-20 relative">
+            <span className="block absolute bg-green-500/40 rounded-xl top-20 left-20 w-3/4 h-30"></span>
+            <span className="block absolute bg-blue-500/40 rounded-xl top-50 left-20 w-1/3 h-30"></span>
+            <span className="block absolute bg-amber-500/40 rounded-xl top-80 left-20 w-1/3 h-30"></span>
+            <span className="block absolute bg-pink-300/40 rounded-xl top-50 left-60 w-50 h-60"></span>
+            <img src="images/taiwan-map.svg" alt="Taiwan Map" className="w-80" />
+        </article>
         </span>
       </section>
       <section className="w-full flex flex-col py-20 items-center gap-10">
