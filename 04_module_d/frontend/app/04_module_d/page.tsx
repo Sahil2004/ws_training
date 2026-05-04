@@ -3,7 +3,7 @@ import { BASE_URL } from "../config";
 export default function Landing() {
   return (
     <main className="bg-gray-200">
-      <header className="flex justify-between px-20 py-5 items-center fixed w-screen backdrop-blur-2xl bg-[#ffffffaf]">
+      <header className="flex z-10 justify-between px-20 py-5 items-center fixed w-screen backdrop-blur-2xl bg-[#ffffffaf]">
         <img src="images/logo.svg" alt="Logo" className="h-10" />
         <nav className="flex gap-4">
           <a href="">Regional Guide</a>
@@ -13,15 +13,37 @@ export default function Landing() {
           <a href="">Contact</a>
         </nav>
       </header>
-      <section className="">
-        <picture>
-          <source
-            media="(width < 760px)"
-            srcSet="images/taiwan-cover-low-res.jpg"
-          />
-          <source media="(width >= 760px)" srcSet="images/taiwan-cover.jpg" />
-          <img src="images/taiwan-cover.jpg" alt="Taiwan Background Cover" />
-        </picture>
+      <section className="relative">
+        <span className="bg-[#00000057] z-5 w-full h-full absolute">
+        </span>
+          <picture>
+            <source
+              media="(width < 760px)"
+              srcSet="images/taiwan-cover-low-res.jpg"
+            />
+            <source media="(width >= 760px)" srcSet="images/taiwan-cover.jpg" />
+            <img
+              src="images/taiwan-cover.jpg"
+              alt="Taiwan Background Cover"
+              className="h-[90vh] w-full object-cover"
+            />
+          </picture>
+        <span className="absolute flex flex-col items-start gap-4 bottom-10 left-10 z-10 text-white">
+          <h1 className="font-black text-5xl">
+            Taiwan: Small Island, Big Adventures
+          </h1>
+          <p>
+            From marble gorges to neon nights—discover four regions, countless
+            experiences.
+          </p>
+          <a
+            href="#regions"
+            download={true}
+            className="px-6 py-4 bg-green-400 rounded-xl"
+          >
+            Explore Regions -&gt;
+          </a>
+        </span>
       </section>
       <section className="w-full flex flex-col py-20 items-center gap-10">
         <span className="w-3/4">
@@ -50,28 +72,43 @@ export default function Landing() {
           <article className="border border-gray-100 shadow-xl p-4 rounded-xl bg-white">
             <h3 className="font-bold text-xl">Official Website QR</h3>
             <span className="flex">
-                <span className="flex flex-col gap-2">
-                    Scan to visit the official tourism website.
-                    <a href="#" className="text-green-500">Open site --&gt;</a>
-                </span>
+              <span className="flex flex-col gap-2">
+                Scan to visit the official tourism website.
+                <a href="#" className="text-green-500">
+                  Open site --&gt;
+                </a>
+              </span>
             </span>
           </article>
           <article className="border border-gray-100 shadow-xl p-4 rounded-xl bg-white">
             <h3 className="font-bold text-xl">Emergency & Safety Contacts</h3>
             <ul>
-              <li><b>Police:</b> 000</li>
-              <li><b>Fire/Ambulance:</b> 000</li>
-              <li><b>Tourist Hotline:</b> 0800-000-000</li>
+              <li>
+                <b>Police:</b> 000
+              </li>
+              <li>
+                <b>Fire/Ambulance:</b> 000
+              </li>
+              <li>
+                <b>Tourist Hotline:</b> 0800-000-000
+              </li>
             </ul>
           </article>
         </span>
-          <article className="flex flex-col gap-5 items-center w-3/4 border border-gray-100 shadow-xl p-4 py-8 rounded-xl bg-white">
-            <h3 className="font-bold text-xl">Downloadable Travel Guide</h3>
-            <p className="text-gray-600">Comprehensive PDF guide with maps, itineraries, and essential tips for your Taiwan adventure.</p>
-            <a href="pdf/taiwan-travel-guide.pdf" download={true} className="px-6 py-4 bg-green-400 rounded-xl">
-                -&gt; Download Travel Guide (PDF)
-            </a>
-          </article>
+        <article className="flex flex-col gap-5 items-center w-3/4 border border-gray-100 shadow-xl p-4 py-8 rounded-xl bg-white">
+          <h3 className="font-bold text-xl">Downloadable Travel Guide</h3>
+          <p className="text-gray-600">
+            Comprehensive PDF guide with maps, itineraries, and essential tips
+            for your Taiwan adventure.
+          </p>
+          <a
+            href="pdf/taiwan-travel-guide.pdf"
+            download={true}
+            className="px-6 py-4 bg-green-400 rounded-xl"
+          >
+            -&gt; Download Travel Guide (PDF)
+          </a>
+        </article>
       </section>
       <section className="w-full flex flex-col py-30 items-center">
         <span className="w-1/2">
