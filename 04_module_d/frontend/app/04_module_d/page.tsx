@@ -14,20 +14,19 @@ export default function Landing() {
         </nav>
       </header>
       <section className="relative">
-        <span className="bg-[#00000057] z-5 w-full h-full absolute">
-        </span>
-          <picture>
-            <source
-              media="(width < 760px)"
-              srcSet="images/taiwan-cover-low-res.jpg"
-            />
-            <source media="(width >= 760px)" srcSet="images/taiwan-cover.jpg" />
-            <img
-              src="images/taiwan-cover.jpg"
-              alt="Taiwan Background Cover"
-              className="h-[90vh] w-full object-cover"
-            />
-          </picture>
+        <span className="bg-[#00000057] z-5 w-full h-full absolute"></span>
+        <picture>
+          <source
+            media="(width < 760px)"
+            srcSet="images/taiwan-cover-low-res.jpg"
+          />
+          <source media="(width >= 760px)" srcSet="images/taiwan-cover.jpg" />
+          <img
+            src="images/taiwan-cover.jpg"
+            alt="Taiwan Background Cover"
+            className="h-[90vh] w-full object-cover"
+          />
+        </picture>
         <span className="absolute flex flex-col items-start gap-4 bottom-10 left-10 z-10 text-white">
           <h1 className="font-black text-5xl">
             Taiwan: Small Island, Big Adventures
@@ -36,13 +35,17 @@ export default function Landing() {
             From marble gorges to neon nights—discover four regions, countless
             experiences.
           </p>
-          <a
-            href="#regions"
-            download={true}
-            className="px-6 py-4 bg-green-400 rounded-xl"
-          >
+          <a href="#regions" className="px-6 py-4 bg-green-400 rounded-xl">
             Explore Regions -&gt;
           </a>
+        </span>
+      </section>
+      <section className="w-full flex flex-col py-20 items-center gap-10">
+        <span className="w-3/4">
+          <h2 className="font-bold text-3xl">Regional Guide</h2>
+          <p className="text-gray-600 pt-5">
+          Click a region on the map to explore.
+          </p>
         </span>
       </section>
       <section className="w-full flex flex-col py-20 items-center gap-10">
