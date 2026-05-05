@@ -41,6 +41,8 @@ router.post(
     return res.render("main", {
       regions: regions,
       infoItems: infoItems,
+      success: true,
+      message: "Thanks! We've received your request. We'll reach out with tips for the region."
     });
   },
 );

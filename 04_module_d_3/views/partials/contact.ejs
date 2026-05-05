@@ -1,0 +1,93 @@
+<div class="container" style="padding: 10vh 0" id="contact">
+  <h1>Travel Consultation</h1>
+  <p class="text-secondary">
+    Get personalized recommendations for your Taiwan adventure.
+  </p>
+  <% if (locals.success) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><%= message %></strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } else if (locals.success === false) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong><%= message %></strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+    <% } %>
+  <div class="card">
+    <div class="card-body">
+      <form class="row g-3" method="POST" action="/04_module_d/submission">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+            placeholder="Your full name"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="country" class="form-label">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            name="country"
+            placeholder="Where are you based?"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="interests" class="form-label">Interests</label>
+          <input
+            type="text"
+            class="form-control"
+            id="interests"
+            name="interests"
+            placeholder="Culture, food, nature, beaches…"
+          />
+        </div>
+        <div class="col-12">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            placeholder="Tell us about your dream Taiwan trip!"
+          ></textarea>
+        </div>
+        <div class="col-12">
+          <button
+            type="submit"
+            class="btn btn-success float-end"
+            style="border: 2px solid #000"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
