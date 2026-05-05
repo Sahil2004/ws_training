@@ -1,16 +1,24 @@
 import { BASE_URL } from "../config";
 
-export default function Landing() {
+export default async function Landing() {
+  const regionsRes = await fetch(BASE_URL + "/regions", {
+    method: "GET",
+  });
+  const regions = await regionsRes.json();
+  const infoRes = await fetch(BASE_URL + "/info", {
+    method: "GET",
+  });
+  const info = await infoRes.json();
   return (
     <main className="bg-gray-200">
       <header className="flex z-20 justify-between px-20 py-5 items-center fixed w-screen backdrop-blur-2xl bg-[#ffffffaf]">
         <img src="images/logo.svg" alt="Logo" className="h-10" />
         <nav className="flex gap-4">
-          <a href="">Regional Guide</a>
-          <a href="">Experiences</a>
-          <a href="">Practical Information</a>
-          <a href="">Essential Information</a>
-          <a href="">Contact</a>
+          <a href="#regions">Regional Guide</a>
+          <a href="#exp">Experiences</a>
+          <a href="#practical">Practical Information</a>
+          <a href="#essential">Essential Information</a>
+          <a href="#contact">Contact</a>
         </nav>
       </header>
       <section className="relative">
@@ -40,24 +48,83 @@ export default function Landing() {
           </a>
         </span>
       </section>
-      <section className="w-full flex flex-col py-20 items-center gap-10" id="regions">
+      <section
+        className="w-full flex flex-col py-20 items-center gap-10"
+        id="regions"
+      >
         <span className="w-3/4">
           <h2 className="font-bold text-3xl">Regional Guide</h2>
           <p className="text-gray-600 pt-5">
-          Click a region on the map to explore.
+            Click a region on the map to explore.
           </p>
         </span>
         <span className="flex gap-5">
-        <article className="border border-gray-200 shadow-xl rounded-xl bg-white p-20 relative">
-            <span className="block absolute bg-green-500/40 rounded-xl top-20 left-20 w-3/4 h-30"></span>
-            <span className="block absolute bg-blue-500/40 rounded-xl top-50 left-20 w-1/3 h-30"></span>
-            <span className="block absolute bg-amber-500/40 rounded-xl top-80 left-20 w-1/3 h-30"></span>
-            <span className="block absolute bg-pink-300/40 rounded-xl top-50 left-60 w-50 h-60"></span>
-            <img src="images/taiwan-map.svg" alt="Taiwan Map" className="w-80" />
-        </article>
+          <span className="flex gap-5 lg:w-2/3">
+            <article className="border border-gray-200 shadow-xl rounded-xl bg-white p-20 relative">
+              <span className="block absolute bg-green-500/40 rounded-xl top-20 left-20 w-3/4 h-30"></span>
+              <span className="block absolute bg-blue-500/40 rounded-xl top-50 left-20 w-1/3 h-30"></span>
+              <span className="block absolute bg-amber-500/40 rounded-xl top-80 left-20 w-1/3 h-30"></span>
+              <span className="block absolute bg-pink-300/40 rounded-xl top-50 left-60 w-50 h-60"></span>
+              <img
+                src="images/taiwan-map.svg"
+                alt="Taiwan Map"
+                className="w-80"
+              />
+            </article>
+          </span>
+          <span className="flex gap-4 flex-wrap">
+            {regions.data.map(
+              (r: Record<string, string | Record<string, string>[]>) => (
+                <article
+                  key={r.id as string}
+                  className={`hover:border-2 bg-white shadow-xl p-4 rounded-xl w-62.5 group`}
+                  style={{ borderColor: r.color as string }}
+                >
+                  <span className="flex w-full justify-between">
+                    <h2 className="text-xl font-bold">{r.name as string}</h2>
+                    <span
+                      className={`block w-4 h-4 rounded-full`}
+                      style={{ backgroundColor: r.color as string }}
+                    ></span>
+                  </span>
+                  <p className="text-gray-600">{r.summary as string}</p>
+                  <ul className="hidden group-hover:block mt-5">
+                    {(r.attractions as Record<string, string>[]).map((a) => (
+                      <li key={a.id}>
+                        <b>{a.name}:</b>
+                        {a.description}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ),
+            )}
+          </span>
         </span>
       </section>
-      <section className="w-full flex flex-col py-20 items-center gap-10">
+      <section
+        className="w-full flex flex-col py-20 items-center gap-10"
+        id="practical"
+      >
+        <span className="w-3/4">
+          <h2 className="font-bold text-3xl">Practical Information</h2>
+          <p className="text-gray-600 pt-5">
+            Pack the essentials—travel made simple.
+          </p>
+        </span>
+        <span>
+          <details>
+            <summary>transportation</summary>
+            {info.data.map((i: Record<string, string>) => {
+              return <p>{i.title}</p>;
+            })}
+          </details>
+        </span>
+      </section>
+      <section
+        className="w-full flex flex-col py-20 items-center gap-10"
+        id="essential"
+      >
         <span className="w-3/4">
           <h2 className="font-bold text-3xl">Essential Information</h2>
           <p className="text-gray-600 pt-5">
@@ -122,7 +189,7 @@ export default function Landing() {
           </a>
         </article>
       </section>
-      <section className="w-full flex flex-col py-30 items-center">
+      <section className="w-full flex flex-col py-30 items-center" id="contact">
         <span className="w-1/2">
           <h2 className="font-bold text-3xl">Travel Consultation</h2>
           <p className="text-gray-600 py-5">

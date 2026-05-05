@@ -21,4 +21,24 @@ router.post("/contact", body('name').notEmpty(), body('email').isEmail(), body('
     })
 })
 
+router.get("/regions", async (req, res) => {
+    const regions = await prisma.region.findMany({
+        include: {
+            attractions: true
+        }
+    })
+    res.status(200).json({
+        success: true,
+        data: regions
+    })
+})
+
+router.get("/info", async (req, res) => {
+    const info = await prisma.infoItems.findMany({})
+    res.status(200).json({
+        success: true,
+        data: info
+    })
+})
+
 export { router as mainRouter }

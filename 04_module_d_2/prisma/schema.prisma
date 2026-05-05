@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Regions {
+  id Int @id @default(autoincrement()) @db.SmallInt
+  key String @db.VarChar(7) // for central
+  name String @db.VarChar(7) // for central
+  color String @db.VarChar(9) // for hex codes with alphas
+  summary String?
+  attractions Attractions[]
+}
+
+model Attractions {
+  id Int @id @default(autoincrement()) @db.SmallInt
+  region_id Int @db.SmallInt
+  region Regions @relation(references: [id], fields: [region_id])
+  name String? @db.VarChar(20)
+  description String? @db.VarChar(100)
+}
+
+model Submissions {
+  id Int @id @default(autoincrement()) @db.SmallInt
+  name String @db.VarChar(50)
+  email String @db.VarChar(100)
+  country String? @db.VarChar(20)
+  interests String? @db.VarChar(20)
+  message String
+  submitted_at DateTime @default(now())
+}
+
+model InfoItems {
+  id Int @id @default(autoincrement()) @db.SmallInt
+  category String @db.VarChar(14)
+  icon String @db.VarChar(20)
+  title String @db.VarChar(50)
+  body String
+  @@map("Info_items")
+}

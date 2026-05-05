@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict Xu4peTOAq5m3MdebHI86vPNHAbveQTNvY87icgOgjMoveMzrDHCFHdB4Q2FgM0D
+\restrict pEwSmHxahbmtGE6x48KKbQqTU25Xq6d9Lixx9oLTW0Nug0YOOE6601oTqLp0s9u
 
 -- Dumped from database version 18.3
 -- Dumped by pg_dump version 18.3
 
--- Started on 2026-05-04 15:22:01
+-- Started on 2026-05-04 15:52:08
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -32,9 +32,9 @@ CREATE DATABASE "04_module_d" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE
 
 ALTER DATABASE "04_module_d" OWNER TO postgres;
 
-\unrestrict Xu4peTOAq5m3MdebHI86vPNHAbveQTNvY87icgOgjMoveMzrDHCFHdB4Q2FgM0D
+\unrestrict pEwSmHxahbmtGE6x48KKbQqTU25Xq6d9Lixx9oLTW0Nug0YOOE6601oTqLp0s9u
 \connect "04_module_d"
-\restrict Xu4peTOAq5m3MdebHI86vPNHAbveQTNvY87icgOgjMoveMzrDHCFHdB4Q2FgM0D
+\restrict pEwSmHxahbmtGE6x48KKbQqTU25Xq6d9Lixx9oLTW0Nug0YOOE6601oTqLp0s9u
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -346,6 +346,15 @@ INSERT INTO public.info_items VALUES (6, 'accommodation', '#i-pin', 'Hot Spring 
 INSERT INTO public.info_items VALUES (7, 'shopping', '#i-bag', 'Night Markets', 'Try snacks as you browse souvenirs—remember to bring small bills.');
 INSERT INTO public.info_items VALUES (8, 'shopping', '#i-utensils', 'Gourmet Gifts', 'Pineapple cakes, nougat, oolong teas—pack for customs.');
 INSERT INTO public.info_items VALUES (9, 'shopping', '#i-globe', 'Tax Refund', 'Foreign visitors can claim VAT refunds—check store windows for the logo.');
+INSERT INTO public.info_items VALUES (1, 'transportation', '#i-train', 'High-Speed Rail (HSR)', 'Zip between major cities from Taipei to Kaohsiung in ~1.5–2 hours. Reserve seats online or at kiosks.');
+INSERT INTO public.info_items VALUES (2, 'transportation', '#i-landmark', 'TRA & Local Lines', 'Coastal and mountain routes cover smaller towns. EasyCard works on most services.');
+INSERT INTO public.info_items VALUES (3, 'transportation', '#i-pin', 'Metro & Buses', 'Taipei/Kaohsiung MRT are bilingual and spotless. Bus networks are extensive and affordable.');
+INSERT INTO public.info_items VALUES (4, 'accommodation', '#i-hotel', 'Hotels & Hostels', 'From luxury towers to design hostels—book early for weekends & festivals.');
+INSERT INTO public.info_items VALUES (5, 'accommodation', '#i-landmark', 'Minshuku (B&B)', 'Warm, family-run stays—especially common on the East Coast.');
+INSERT INTO public.info_items VALUES (6, 'accommodation', '#i-pin', 'Hot Spring Resorts', 'Soak in Beitou, Jiaoxi or mountainside retreats across the island.');
+INSERT INTO public.info_items VALUES (7, 'shopping', '#i-bag', 'Night Markets', 'Try snacks as you browse souvenirs—remember to bring small bills.');
+INSERT INTO public.info_items VALUES (8, 'shopping', '#i-utensils', 'Gourmet Gifts', 'Pineapple cakes, nougat, oolong teas—pack for customs.');
+INSERT INTO public.info_items VALUES (9, 'shopping', '#i-globe', 'Tax Refund', 'Foreign visitors can claim VAT refunds—check store windows for the logo.');
 
 
 --
@@ -438,11 +447,11 @@ ALTER TABLE ONLY public."Attraction"
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2026-05-04 15:22:01
+-- Completed on 2026-05-04 15:52:08
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict Xu4peTOAq5m3MdebHI86vPNHAbveQTNvY87icgOgjMoveMzrDHCFHdB4Q2FgM0D
+\unrestrict pEwSmHxahbmtGE6x48KKbQqTU25Xq6d9Lixx9oLTW0Nug0YOOE6601oTqLp0s9u
 
