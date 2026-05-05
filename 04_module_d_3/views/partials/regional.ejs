@@ -1,0 +1,50 @@
+<div class="container-fluid" style="padding: 10vh 10vw">
+  <h1>Regional Guide</h1>
+  <p class="text-secondary">Click a region on the map to explore.</p>
+  <div style="display: flex; justify-content: space-between; width: 100%; gap: 20px;">
+    <div class="card">
+      <div class="card-body" style="position: relative; display: flex; align-items: center; justify-content: center;">
+        <img
+          src="public/images/taiwan-map.svg"
+          alt="Taiwan Map"
+          style="width: 50%"
+        />
+        <span style="position: absolute; width: 100%; height: 40%; background-color: rgba(0, 255, 0, 0.5); top: 0; left: 0; border-radius: 20px;" onclick="showAttr(0)"></span>
+        <span style="position: absolute; width: 50%; height: 30%; background-color: rgba(0, 0, 255, 0.5); top: 40%; left: 0; border-radius: 20px;" onclick="showAttr(1)"></span>
+        <span style="position: absolute; width: 50%; height: 60%; background-color: rgba(255, 0, 0, 0.5); top: 40%; left: 50%; border-radius: 20px;" onclick="showAttr(2)"></span>
+        <span style="position: absolute; width: 50%; height: 30%; background-color: rgba(246, 255, 0, 0.5); top: 70%; left: 0; border-radius: 20px;" onclick="showAttr(3)"></span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <% regions.forEach(r => { %>
+      <div class="card regionCard" style="width: 18rem; border-width: 0; border-color: <%= r.color %>; outline: 1px solid #000;">
+        <div class="card-body">
+          <h5 class="card-title">
+            <span style="display: flex; align-items: center; justify-content: space-between;">
+                <%= r.name %>
+                <span style="display: block; width: 10px; height: 10px; border-radius: 50%; background-color: <%= r.color %>;"></span>
+            </span>
+          </h5>
+          <p class="card-text">
+            <%= r.summary %>
+          </p>
+          <ul class="regionsList">
+            <% r.attractions.forEach(a => { %>
+                <li><b><%= a.name %>:</b> <%= a.description %></li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<script>
+    const regionsList = document.querySelectorAll('.regionsList')
+    function showAttr(number) {
+        regionsList.forEach(r => {
+            r.style.maxHeight = "0";
+        })
+        regionsList[number].style.maxHeight = "500px";
+    }
+</script>
