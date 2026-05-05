@@ -1,0 +1,54 @@
+<section class="section regions container" id="regions">
+  <h1>Travel Consultation</h1>
+  <p class="text-secondary">
+    Get personalized recommendations for your Taiwan adventure.
+  </p>
+  <% if (locals.of === "contact") { %>
+  <% if (locals.success === true) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong><%= locals.message %></strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> 
+  <% } else { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><%= locals.message %></strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+  <% } %>
+  <div class="card">
+    <div class="card-body">
+      <form class="row g-3" method="POST" action="/04_module_d/submission">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" id="name" required placeholder="Your full name" />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" id="email" required placeholder="you@example.com" />
+        </div>
+        <div class="col-md-6">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" name="country" class="form-control" id="country" placeholder="Where are you based?" />
+        </div>
+        <div class="col-md-6">
+          <label for="interests" class="form-label">Interests</label>
+          <input type="text" name="interests" class="form-control" id="interests" placeholder="Culture, food, nature, beaches…" />
+        </div>
+        <div class="col-12">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            required
+            placeholder="Tell us about your dream Taiwan trip!"
+          ></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success float-end">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

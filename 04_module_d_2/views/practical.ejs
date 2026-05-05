@@ -1,0 +1,114 @@
+<section class="section regions container-fluid" id="regions">
+  <h1>Practical Information</h1>
+  <p class="text-secondary">Pack the essentials—travel made simple.</p>
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic radio toggle button group"
+  >
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio2"
+      id="transportation"
+      autocomplete="off"
+      checked
+    />
+    <label class="btn btn-outline-primary" for="transportation">transportation</label>
+
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio2"
+      id="accommodation"
+      autocomplete="off"
+    />
+    <label class="btn btn-outline-primary" for="accommodation">accommodation</label>
+
+    <input
+      type="radio"
+      class="btn-check"
+      name="btnradio2"
+      id="shopping"
+      autocomplete="off"
+    />
+    <label class="btn btn-outline-primary" for="shopping">shopping</label>
+  </div>
+  <div style="width: 100%; margin-top: 5vh; display: flex; flex-direction: column; gap: 10px;" class="transportation">
+            <p class="d-inline-flex gap-1">
+    <% infoItems.forEach((item, i) => { %>
+        <% if (item.category === "transportation") { %>
+  <button class="btn btn-outline-dark" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#transportation<%= i %>" aria-expanded="false" aria-controls="transportation<%= i %>"><%= item.title %></button>
+        <% } %>
+    <% }) %>
+</p>
+<div class="row">
+    <% infoItems.forEach((item, i) => { %>
+        <% if (item.category === "transportation") { %>
+  <div class="col">
+    <div class="collapse multi-collapse" id="transportation<%= i %>">
+      <div class="card card-body">
+        <%= item.body %>
+      </div>
+    </div>
+  </div>
+        <% } %>
+    <% }) %>
+</div>
+  </div>
+  <div style="width: 100%; margin-top: 5vh; display: none; flex-direction: column; gap: 10px;" class="accommodation">
+            <p class="d-inline-flex gap-1">
+    <% infoItems.forEach((item, i) => { %>
+        <% if (item.category === "accommodation") { %>
+  <button class="btn btn-outline-dark" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#accommodation<%= i %>" aria-expanded="false" aria-controls="accommodation<%= i %>"><%= item.title %></button>
+        <% } %>
+    <% }) %>
+</p>
+<div class="row">
+    <% infoItems.forEach((item, i) => { %>
+        <% if (item.category === "accommodation") { %>
+  <div class="col">
+    <div class="collapse multi-collapse" id="accommodation<%= i %>">
+      <div class="card card-body">
+        <%= item.body %>
+      </div>
+    </div>
+  </div>
+        <% } %>
+    <% }) %>
+</div>
+  </div>
+  <div style="width: 100%; margin-top: 5vh; display: none; flex-direction: column; gap: 10px;" class="shopping">
+            <p class="d-inline-flex gap-1">
+    <% infoItems.forEach((item, i) => { %>
+        <% if (item.category === "shopping") { %>
+  <button class="btn btn-outline-dark" style="width: 100%;" type="button" data-bs-toggle="collapse" data-bs-target="#shopping<%= i %>" aria-expanded="false" aria-controls="accommodation<%= i %>"><%= item.title %></button>
+        <% } %>
+    <% }) %>
+</p>
+<div class="row">
+    <% infoItems.forEach((item, i) => { %>
+        <% if (item.category === "shopping") { %>
+  <div class="col">
+    <div class="collapse multi-collapse" id="shopping<%= i %>">
+      <div class="card card-body">
+        <%= item.body %>
+      </div>
+    </div>
+  </div>
+        <% } %>
+    <% }) %>
+</div>
+  </div>
+</section>
+<script>
+    const practicalBtn = document.querySelectorAll("input[name=btnradio2]");
+    let lastPracticalValue = 'transportation'
+    practicalBtn.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            document.querySelector(`.${lastPracticalValue}`).style.display = 'none'
+            document.querySelector(`.${e.target.id}`).style.display = 'flex'
+            lastPracticalValue = e.target.id
+        })
+    })
+</script>
