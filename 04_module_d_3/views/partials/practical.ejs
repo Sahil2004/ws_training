@@ -1,0 +1,156 @@
+<div class="container-fluid" style="padding: 10vh 10vw" id="exp">
+  <h1>Practical Information</h1>
+  <p class="text-secondary">Pack the essentials—travel made simple</p>
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic radio toggle button group"
+  >
+    <input
+      type="radio"
+      class="btn-check"
+      name="practicalRadio"
+      id="transportation"
+      autocomplete="off"
+      checked
+    />
+    <label class="btn btn-outline-dark rounded-start-pill" for="transportation"
+      >transportation</label
+    >
+    <input
+      type="radio"
+      class="btn-check"
+      name="practicalRadio"
+      id="accommodation"
+      autocomplete="off"
+    />
+    <label class="btn btn-outline-dark" for="accommodation"
+      >accommodation</label
+    >
+    <input
+      type="radio"
+      class="btn-check"
+      name="practicalRadio"
+      id="shopping"
+      autocomplete="off"
+    />
+    <label class="btn btn-outline-dark rounded-end-pill" for="shopping"
+      >shopping</label
+    >
+  </div>
+  <div class="transportation">
+    <p style="display: flex; gap: 10px; margin-top: 40px; flex-wrap: wrap; justify-content: space-between;">
+        <% infoItems.forEach((item, i) => { %>
+            <% if (item.category === 'transportation') { %>
+                <button
+                  class="btn btn-outline-dark"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#transportation<%= i %>"
+                  aria-expanded="false"
+                  aria-controls="transportation<%= i %>"
+                  style="width: 100%; max-width: 400px;"
+                >
+                    <%= item.title %>
+                </button>
+            <% } %>
+        <% }) %>
+    </p>
+    <div style="min-height: 120px">
+        <div class="row">
+        <% infoItems.forEach((item, i) => { %>
+            <% if (item.category === 'transportation') { %>
+                <div class="col">
+                    <div class="collapse multi-collapse" id="transportation<%= i %>">
+                        <div class="card card-body">
+                          <%= item.body %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+        </div>
+    </div>
+  </div>
+  <div class="accommodation">
+    <p style="display: flex; gap: 10px; margin-top: 40px; flex-wrap: wrap; justify-content: space-between;">
+        <% infoItems.forEach((item, i) => { %>
+            <% if (item.category === 'accommodation') { %>
+                <button
+                  class="btn btn-outline-dark"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#accommodation<%= i %>"
+                  aria-expanded="false"
+                  aria-controls="accommodation<%= i %>"
+                  style="width: 100%; max-width: 400px;"
+                >
+                    <%= item.title %>
+                </button>
+            <% } %>
+        <% }) %>
+    </p>
+    <div style="min-height: 120px">
+        <div class="row">
+        <% infoItems.forEach((item, i) => { %>
+            <% if (item.category === 'accommodation') { %>
+                <div class="col">
+                    <div class="collapse multi-collapse" id="accommodation<%= i %>">
+                        <div class="card card-body">
+                          <%= item.body %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+        </div>
+    </div>
+  </div>
+  <div class="shopping">
+    <p style="display: flex; gap: 10px; margin-top: 40px; flex-wrap: wrap; justify-content: space-between;">
+        <% infoItems.forEach((item, i) => { %>
+            <% if (item.category === 'shopping') { %>
+                <button
+                  class="btn btn-outline-dark"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#shopping<%= i %>"
+                  aria-expanded="false"
+                  aria-controls="shopping<%= i %>"
+                  style="width: 100%; max-width: 400px;"
+                >
+                    <%= item.title %>
+                </button>
+            <% } %>
+        <% }) %>
+    </p>
+    <div style="min-height: 120px">
+        <div class="row">
+        <% infoItems.forEach((item, i) => { %>
+            <% if (item.category === 'shopping') { %>
+                <div class="col">
+                    <div class="collapse multi-collapse" id="shopping<%= i %>">
+                        <div class="card card-body">
+                          <%= item.body %>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+  const pracInpts = document.querySelectorAll("input[name=practicalRadio]");
+  let lastPrac = "transportation";
+  document.querySelector(".accommodation").style.display = "none";
+  document.querySelector(".shopping").style.display = "none";
+  pracInpts.forEach((r) => {
+    r.addEventListener("change", (e) => {
+      document.querySelector(`.${e.target.id}`).style.display = "block";
+      document.querySelector(`.${lastPrac}`).style.display = "none";
+      lastPrac = e.target.id;
+    });
+  });
+</script>
