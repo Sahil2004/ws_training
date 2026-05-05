@@ -7,9 +7,9 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.set("view engine", "ejs")
 app.set("views", "views/")
-app.use("/css", express.static(process.cwd() + "/node_modules/bootstrap/dist/css"))
-app.use("/js", express.static(process.cwd() + "/node_modules/bootstrap/dist/js"))
-app.use("/public", express.static(process.cwd() + "/public"))
+app.use("/04_module_d/css", express.static(process.cwd() + "/node_modules/bootstrap/dist/css"))
+app.use("/04_module_d/js", express.static(process.cwd() + "/node_modules/bootstrap/dist/js"))
+app.use("/04_module_d/public", express.static(process.cwd() + "/public"))
 
 app.use("/04_module_d", mainRouter)
 
