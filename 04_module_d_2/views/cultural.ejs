@@ -1,0 +1,327 @@
+<section class="section exp container-fluid" id="exp">
+  <span
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    "
+  >
+    <h1>Cultural & Culinary Experiences</h1>
+    <div
+      class="btn-group"
+      role="group"
+      aria-label="Basic radio toggle button group"
+    >
+      <input
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="cultural"
+        autocomplete="off"
+        checked
+      />
+      <label class="btn btn-outline-primary" for="cultural">Cultural</label>
+
+      <input
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="culinary"
+        autocomplete="off"
+      />
+      <label class="btn btn-outline-primary" for="culinary">Culinary</label>
+    </div>
+  </span>
+  <div class="card cultural">
+    <div class="card-body">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="carouselContent">
+              <picture>
+                <source
+                  srcset="/public/images/cultural-1.jpg"
+                  media="(width >= 760px)"
+                />
+                <source
+                  srcset="/public/images/cultural-1-low-res.jpg"
+                  media="(width < 760px)"
+                />
+                <img
+                  src="/public/images/cultural-1.jpg"
+                  class="d-block rounded"
+                  alt="Temple Etiquette Walk"
+                />
+              </picture>
+              <div class="carouselContentInner">
+                <h2>Temple Etiquette Walk</h2>
+                <p class="text-secondary">
+                  Learn incense rituals, fortune sticks, and local customs.
+                </p>
+                <button type="button" class="btn btn-main icon-link">
+                  Ask about this experience
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carouselContent">
+              <picture>
+                <source
+                  srcset="/public/images/cultural-2.jpg"
+                  media="(width >= 760px)"
+                />
+                <source
+                  srcset="/public/images/cultural-2-low-res.jpg"
+                  media="(width < 760px)"
+                />
+                <img
+                  src="/public/images/cultural-2.jpg"
+                  class="d-block rounded"
+                  alt="Aboriginal Crafts"
+                />
+              </picture>
+              <div class="carouselContentInner">
+                <h2>Aboriginal Crafts</h2>
+                <p class="text-secondary">
+                  Textiles & woodcrafts with indigenous artisans.
+                </p>
+                <button type="button" class="btn btn-main icon-link">
+                  Ask about this experience
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carouselContent">
+              <picture>
+                <source
+                  srcset="/public/images/cultural-3.jpg"
+                  media="(width >= 760px)"
+                />
+                <source
+                  srcset="/public/images/cultural-3-low-res.jpg"
+                  media="(width < 760px)"
+                />
+                <img
+                  src="/public/images/cultural-3.jpg"
+                  class="d-block rounded"
+                  alt="Tea Ceremony in Alishan"
+                />
+              </picture>
+              <div class="carouselContentInner">
+                <h2>Tea Ceremony in Alishan</h2>
+                <p class="text-secondary">
+                  Savor high-mountain oolongs and brewing technique.
+                </p>
+                <button type="button" class="btn btn-main icon-link">
+                  Ask about this experience
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card culinary" style="display: none;">
+    <div class="card-body">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="carouselContent">
+              <picture>
+                <source
+                  srcset="/public/images/culinary-1.jpg"
+                  media="(width >= 760px)"
+                />
+                <source
+                  srcset="/public/images/culinary-1-low-res.jpg"
+                  media="(width < 760px)"
+                />
+                <img
+                  src="/public/images/culinary-1.jpg"
+                  class="d-block rounded"
+                  alt="Night Market Tasting"
+                />
+              </picture>
+              <div class="carouselContentInner">
+                <h2>Night Market Tasting</h2>
+                <p class="text-secondary">
+Stinky tofu, bubble tea, oyster omelets & more.
+                </p>
+                <button type="button" class="btn btn-main icon-link">
+                  Ask about this experience
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carouselContent">
+              <picture>
+                <source
+                  srcset="/public/images/culinary-2.jpg"
+                  media="(width >= 760px)"
+                />
+                <source
+                  srcset="/public/images/culinary-2-low-res.jpg"
+                  media="(width < 760px)"
+                />
+                <img
+                  src="/public/images/culinary-2.jpg"
+                  class="d-block rounded"
+                  alt="Sea-to-Table in Hualien"
+                />
+              </picture>
+              <div class="carouselContentInner">
+                <h2>Sea-to-Table in Hualien</h2>
+                <p class="text-secondary">
+                  Fresh catch, coastal views, local recipes.
+                </p>
+                <button type="button" class="btn btn-main icon-link">
+                  Ask about this experience
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carouselContent">
+              <picture>
+                <source
+                  srcset="/public/images/culinary-3.jpg"
+                  media="(width >= 760px)"
+                />
+                <source
+                  srcset="/public/images/culinary-3-low-res.jpg"
+                  media="(width < 760px)"
+                />
+                <img
+                  src="/public/images/culinary-3.jpg"
+                  class="d-block rounded"
+                  alt="Pineapple Cake Workshop"
+                />
+              </picture>
+              <div class="carouselContentInner">
+                <h2>Pineapple Cake Workshop</h2>
+                <p class="text-secondary">
+                  Bake iconic treats to bring home.
+                </p>
+                <button type="button" class="btn btn-main icon-link">
+                  Ask about this experience
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+    const culturalBtn = document.querySelectorAll("input[name=btnradio]");
+    let lastCulturalVal = 'cultural'
+    culturalBtn.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            document.querySelector(`.${lastCulturalVal}`).style.display = 'none'
+            document.querySelector(`.${e.target.id}`).style.display = 'block'
+            lastCulturalVal = e.target.id
+        })
+    })
+</script>
