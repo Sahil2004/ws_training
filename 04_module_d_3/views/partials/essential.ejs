@@ -1,0 +1,150 @@
+<div class="container-fluid" style="padding: 0 10vw" id="essential">
+  <h1>Essential Information</h1>
+  <p class="text-secondary">
+    Official support and key contacts for your trip to Taiwan.
+  </p>
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    "
+  >
+    <div class="card" style="width: 400px; height: 200px">
+      <div class="card-body">
+        <h5 class="card-title">Taiwan Tourism Bureau</h5>
+        <ul class="card-text">
+          <li>+886-2-0000-0000</li>
+          <li>info@example.com</li>
+
+          <li>example.com</li>
+        </ul>
+        <span style="display: flex; gap: 20px">
+          <button
+            type="button"
+            class="btn btn-dark"
+            style="display: flex; gap: 10px"
+            onclick="speak()"
+          >
+            Read aloud
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            style="display: flex; gap: 10px"
+            onclick="stop()"
+          >
+            Stop
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="card" style="width: 400px; height: 200px">
+      <div class="card-body">
+        <h5 class="card-title">Official Website QR</h5>
+        <div class="card-text">
+          <div style="display: flex; gap: 20px; align-items: center">
+            <img src="/public/images/QR.PNG" alt="QR Code of Website" />
+            <span>
+              <p class="text-secondary">
+                Scan to visit the official tourism website.
+              </p>
+              <a
+                class="icon-link text-success link-underline link-underline-opacity-0"
+                href="#"
+              >
+                Open site
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="bi"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                  />
+                </svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="width: 400px; height: 200px">
+      <div class="card-body">
+        <h5 class="card-title">Emergency & Safety Contacts</h5>
+        <ul class="card-text">
+          <li><b>Police:</b> 000</li>
+          <li><b>Fire/Ambulance:</b> 000</li>
+          <li><b>Tourist Hotline</b> 0800-000-000</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div
+    class="card"
+    style="
+      width: 100%;
+      margin-top: 50px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    "
+  >
+    <div
+      class="card-body"
+      style="
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 50px;
+      "
+    >
+      <h5 class="card-title">Downloadable Travel Guide</h5>
+      <p class="card-text text-secondary">
+        Comprehensive PDF guide with maps, itineraries, and essential tips for
+        your Taiwan adventure.
+      </p>
+      <a
+        href="/public/pdf/taiwan-travel-guide.pdf"
+        class="link-underline-opacity-0 link-underline"
+        download="true"
+      >
+        <button
+          type="button"
+          class="btn btn-success"
+          style="display: flex; gap: 10px"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="bi"
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+            fill="white"
+            style="width: 20px"
+          >
+            <path
+              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+            />
+          </svg>
+          Download Travel Guide (PDF)
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const speak = () => {
+    let utterance = new SpeechSynthesisUtterance(
+      "Taiwan Tourism Bureau: Phone plus eight eight six dash two dash zero zero zero zero dash zero zero zero zero. Email info at example dot com. Official site at example dot com. For urgent help, dial zero zero zero for police or zero zero zero for emergencies.",
+    );
+    speechSynthesis.speak(utterance);
+  };
+  const stop = () => {
+    speechSynthesis.cancel();
+  };
+</script>
